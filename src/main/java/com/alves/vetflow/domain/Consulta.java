@@ -35,7 +35,10 @@ public class Consulta {
     @Column(nullable = false, name = "data_hora")
     private LocalDateTime dataHora;
 
-    //StatusConsulta
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatusConsulta status;
 
     @Column(nullable = false)
     private String observacoes;
