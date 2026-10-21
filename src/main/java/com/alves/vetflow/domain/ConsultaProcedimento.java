@@ -24,7 +24,9 @@ public class ConsultaProcedimento {
     @JoinColumn(name = "consulta_id", nullable = false)
     private Consulta consulta;
 
-    //private Procedimento procedimento;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "procedimento_id", nullable = false)
+    private Procedimento procedimento;
 
     @Column(nullable = false)
     private Integer quantidade;
