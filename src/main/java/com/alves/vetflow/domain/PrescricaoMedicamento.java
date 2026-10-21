@@ -22,7 +22,9 @@ public class PrescricaoMedicamento {
     @JoinColumn(name = "prescricao_id", nullable = false)
     private Prescricao prescricao;
 
-//    private Medicamento medicamento;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "medicamento_id", nullable = false)
+    private Medicamento medicamento;
 
     @Column(nullable = false)
     private String dosagem;
