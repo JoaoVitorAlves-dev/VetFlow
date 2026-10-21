@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "tb_veterinario_clinica")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Veterinariolinica {
+public class VeterinarioClinica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +25,9 @@ public class Veterinariolinica {
     @JoinColumn(name = "veterinario_id", nullable = false)
     private Usuario veterinario;
 
-    //clinica
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "clinica_id")
+    private Clinica clinica;
 
     @Column(nullable = false, name = "data_inicio")
     private LocalDateTime dataInicio;
