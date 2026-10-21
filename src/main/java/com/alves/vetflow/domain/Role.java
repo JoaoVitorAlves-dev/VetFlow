@@ -1,7 +1,7 @@
 package com.alves.vetflow.domain;
 
 public enum Role {
-    CLIENTE,
-    DONO,
-    ENTREGADOR
+    TUTOR,
+    VETERINARIO,
+    RECEPCIONISTA
 }
