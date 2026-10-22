@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 public record AnimalRequest(
-        @NotNull Long tutorId,
+        @NotNull Long usuarioId,
         @NotBlank String nome,
         @NotBlank String especie,
         @NotBlank String raca,
