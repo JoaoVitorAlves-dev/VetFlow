@@ -1,5 +1,6 @@
 package com.alves.vetflow.service;
 
+import com.alves.vetflow.domain.RefreshToken;
 import com.alves.vetflow.domain.Role;
 import com.alves.vetflow.domain.Usuario;
 import com.alves.vetflow.dto.request.LoginRequest;
@@ -26,6 +27,14 @@ public class UsuarioService {
         this.tokenService = tokenService;
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public RefreshTokenResponse refresh(String token) {
+        RefreshToken refreshToken = refreshTokenService.validarERotacionar(token);
+
+        String access = tokenService.gerarToken(refreshToken.getUsuario().getUsername());
+
+        return new RefreshTokenResponse(access, refreshToken.getToken());
     }
 
     public void registrar(RegisterRequest registerRequest) {
