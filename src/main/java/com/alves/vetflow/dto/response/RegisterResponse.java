@@ -1,6 +1,6 @@
 package com.alves.vetflow.dto.response;
 
-public record UsuarioResponse(
+public record RegisterResponse(
         Long id,
         String username
 ) {
