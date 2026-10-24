@@ -1,11 +1,11 @@
 package com.alves.vetflow.service;
 
 import com.alves.vetflow.domain.RefreshToken;
-import com.alves.vetflow.domain.Role;
 import com.alves.vetflow.domain.Usuario;
 import com.alves.vetflow.dto.request.LoginRequest;
 import com.alves.vetflow.dto.request.RegisterRequest;
 import com.alves.vetflow.dto.response.RefreshTokenResponse;
+import com.alves.vetflow.mapper.UsuarioMapper;
 import com.alves.vetflow.repositories.UsuarioRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,11 +40,9 @@ public class UsuarioService {
     public void registrar(RegisterRequest registerRequest) {
         usuarioRepository.findByUsername(registerRequest.username()).orElseThrow(() -> new RuntimeException("Username já existe."));
 
-        Usuario usuario = new Usuario();
+        Usuario usuario = UsuarioMapper.toEntity(registerRequest);
         usuario.setUsername(registerRequest.username());
         usuario.setPassword(passwordEncoder.encode(registerRequest.password()));
-        usuario.setRole(Role.USUARIO);
-
         usuarioRepository.save(usuario);
     }
 
