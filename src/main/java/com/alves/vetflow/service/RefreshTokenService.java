@@ -5,7 +5,10 @@ import com.alves.vetflow.domain.Usuario;
 import com.alves.vetflow.repositories.RefreshTokenRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -41,7 +44,7 @@ public class RefreshTokenService {
 
         if (atual.getExpiraEm().isBefore(Instant.now())) {
             refreshTokenRepository.delete(atual);
-            throw new RuntimeException("Token expirado.");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token expirado.");
         }
         return criar(atual.getUsuario());
     }

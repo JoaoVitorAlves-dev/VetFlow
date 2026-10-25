@@ -2,6 +2,7 @@ package com.alves.vetflow.mapper;
 
 import com.alves.vetflow.domain.Consulta;
 import com.alves.vetflow.domain.Parcela;
+import com.alves.vetflow.domain.StatusParcela;
 import com.alves.vetflow.dto.request.ParcelaRequest;
 import com.alves.vetflow.dto.response.ParcelaResponse;
 import lombok.experimental.UtilityClass;
@@ -11,7 +12,7 @@ public class ParcelaMapper {
 
     public Parcela toEntity(ParcelaRequest req, Consulta consulta) {
         Parcela parcela = new Parcela();
-        parcela.setStatus(req.status());
+        parcela.setStatus(req.status() != null ? req.status() : StatusParcela.PENDENTE);
         parcela.setValor(req.valor());
         parcela.setVencimento(req.vencimento());
         parcela.setConsulta(consulta);

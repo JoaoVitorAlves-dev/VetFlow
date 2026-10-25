@@ -1,9 +1,12 @@
 package com.alves.vetflow.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public record PrescricaoMedicamentoRequest(
-        Long prescricaoId,
-        Long medicamentoId,
-        String dosagem,
-        Integer duracaoDias
+        @NotNull Long prescricaoId,
+        @NotNull Long medicamentoId,
+        @NotBlank String dosagem,
+        @NotNull Integer duracaoDias
 ) {
 }

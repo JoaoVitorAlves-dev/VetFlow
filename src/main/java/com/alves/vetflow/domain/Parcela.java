@@ -31,8 +31,6 @@ public class Parcela {
     @Column(nullable = false)
     private LocalDateTime vencimento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id")
     @Enumerated(EnumType.STRING)
     private StatusParcela status;
 }

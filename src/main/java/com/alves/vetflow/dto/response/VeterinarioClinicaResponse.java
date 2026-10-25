@@ -1,13 +1,13 @@
 package com.alves.vetflow.dto.response;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record VeterinarioClinicaResponse(
         Long id,
         String nomeVeterinario,
         String nomeClinica,
-        LocalDateTime dataInicio,
+        LocalDate dataInicio,
         Duration cargaHoraria
 ) {
 }

@@ -7,10 +7,12 @@ import com.alves.vetflow.dto.request.RegisterRequest;
 import com.alves.vetflow.dto.response.RefreshTokenResponse;
 import com.alves.vetflow.mapper.UsuarioMapper;
 import com.alves.vetflow.repositories.UsuarioRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UsuarioService {
@@ -38,7 +40,9 @@ public class UsuarioService {
     }
 
     public void registrar(RegisterRequest registerRequest) {
-        usuarioRepository.findByUsername(registerRequest.username()).orElseThrow(() -> new RuntimeException("Username já existe."));
+        if (usuarioRepository.existsByUsername(registerRequest.username())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username já existe.");
+        }
 
         Usuario usuario = UsuarioMapper.toEntity(registerRequest);
         usuario.setUsername(registerRequest.username());

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Setter
@@ -30,7 +31,7 @@ public class VeterinarioClinica {
     private Clinica clinica;
 
     @Column(nullable = false, name = "data_inicio")
-    private LocalDateTime dataInicio;
+    private LocalDate dataInicio;
 
     @Column(nullable = false, name = "carga_horaria")
     private Duration cargaHoraria;
