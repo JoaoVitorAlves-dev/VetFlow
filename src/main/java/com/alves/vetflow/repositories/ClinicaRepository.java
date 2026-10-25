@@ -12,7 +12,5 @@ import java.awt.print.Pageable;
 
 @Repository
 public interface ClinicaRepository extends JpaRepository<Clinica, Long> {
-    Page<ClinicaResponse> findAllBy(Pageable pageable);
-
     Boolean existsByNome(@NotBlank String nome);
 }

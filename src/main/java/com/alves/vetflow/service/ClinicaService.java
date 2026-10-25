@@ -6,11 +6,10 @@ import com.alves.vetflow.dto.response.ClinicaResponse;
 import com.alves.vetflow.mapper.ClinicaMapper;
 import com.alves.vetflow.repositories.ClinicaRepository;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.awt.print.Pageable;
 
 @Service
 public class ClinicaService {
@@ -22,7 +21,7 @@ public class ClinicaService {
     }
 
     public Page<ClinicaResponse> listar(Pageable pageable) {
-        return clinicaRepository.findAllBy(pageable);
+        return clinicaRepository.findAll(pageable).map(ClinicaMapper::toDTO);
     }
 
     public ClinicaResponse criar(ClinicaRequest req) {
