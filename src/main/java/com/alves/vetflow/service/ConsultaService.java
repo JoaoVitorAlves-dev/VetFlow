@@ -64,7 +64,7 @@ public class ConsultaService {
         Usuario usuario = usuarioRepository.findByUsername(auth.getName())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
 
-        Consulta consulta = consultaRepository.findById(id)
+        Consulta consulta = consultaRepository.findByIdAndAnimalTutor(id, usuario)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Consulta não encontrada."));
 
         consulta.setObservacoes(req.observacao());
