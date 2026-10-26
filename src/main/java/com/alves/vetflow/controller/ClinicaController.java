@@ -30,7 +30,7 @@ public class ClinicaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(clinicaService.criar(request));
     }
 
-    @PostMapping("/atualizar/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<ClinicaResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ClinicaRequest clinicaRequest) {
         return ResponseEntity.ok(clinicaService.atualizar(id, clinicaRequest));
     }

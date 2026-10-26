@@ -30,7 +30,7 @@ public class ParcelaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(parcelaService.criar(req));
     }
 
-    @PostMapping("/atualizar/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<ParcelaResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ParcelaRequest req) {
         return ResponseEntity.ok(parcelaService.atualizar(id, req));
     }

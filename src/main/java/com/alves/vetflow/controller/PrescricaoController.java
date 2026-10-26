@@ -30,7 +30,7 @@ public class PrescricaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(prescricaoService.criar(req));
     }
 
-    @PostMapping("/atualizar/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<PrescricaoResponse> atualizar(@PathVariable Long id, @Valid @RequestBody PrescricaoRequest req) {
         return ResponseEntity.ok(prescricaoService.atualizar(id, req));
     }

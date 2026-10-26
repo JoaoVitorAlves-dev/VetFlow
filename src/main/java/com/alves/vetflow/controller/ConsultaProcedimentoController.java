@@ -30,7 +30,7 @@ public class ConsultaProcedimentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(consultaProcedimentoService.criar(request));
     }
 
-    @PostMapping("/atualizar/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<ConsultaProcedimentoResponse> atualizar(@PathVariable Long id, @Valid @RequestBody ConsultaProcedimentoRequest req) {
         return ResponseEntity.ok(consultaProcedimentoService.atualizar(id, req));
     }
