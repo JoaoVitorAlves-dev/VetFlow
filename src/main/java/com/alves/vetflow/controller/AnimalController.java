@@ -31,7 +31,7 @@ public class AnimalController {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.criar(request, auth));
     }
 
-    @PostMapping("/atualizar/{id}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<AnimalResponse> atualizar(@PathVariable Long id, @Valid @RequestBody AnimalRequest request, Authentication auth) {
         return ResponseEntity.ok(animalService.atualizar(id, request, auth));
     }
